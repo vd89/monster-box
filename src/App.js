@@ -20,16 +20,18 @@ class App extends Component {
       console.log(err);
     }
   }
-  async onChangeHandler(e) {
+  onChangeHandler = async (e) => {
     await this.setState({ searchField: e.target.value });
-  }
+  };
+
   render() {
     const { monsters, searchField, placeholder } = this.state;
     const filterMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(searchField.toLowerCase()));
 
     return (
       <div className='App'>
-        <SearchBox placeholder={placeholder} onChangeHandler={(e) => this.onChangeHandler(e)} />
+        <h1>Monster Box</h1>
+        <SearchBox placeholder={placeholder} onChangeHandler={this.onChangeHandler} />
         <CardList monsters={filterMonsters} />
       </div>
     );
